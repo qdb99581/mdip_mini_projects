@@ -1,9 +1,22 @@
 from scipy.io import loadmat
 
+import utils
+
 if __name__ == "__main__":
     data_dir = './dataset/Indian_pines_corrected.mat'
-    label_dir = "dataset/Indian_pines_gt.mat"
+    label_dir = './dataset/Indian_pines_gt.mat'
+
     x_data = loadmat(data_dir)["indian_pines_corrected"]
     y_data = loadmat(label_dir)["indian_pines_gt"]
-    print(x_data.shape)
-    print(y_data.shape)
+
+    # Pixel A: Class = 3, at [0][0]
+    # Pixel B: Class = 3, at [0][1]
+    # Pixel C: Class = 0, at [0][144]
+    pixels = {
+        "Pixel A": (x_data[0][0], y_data[0][0]),
+        "Pixel B": (x_data[0][1], y_data[0][1]),
+        "Pixel C": (x_data[0][144], y_data[0][144]),
+    }
+
+    sam = utils.pixel_SAM(pixels["Pixel A"][0], pixels["Pixel B"][0])
+    print(sam)
