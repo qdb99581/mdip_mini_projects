@@ -13,8 +13,8 @@ if __name__ == "__main__":
     # Pixel B: Class = 3, at [0][1]
     # Pixel C: Class = 0, at [0][144]
     pixels = {
-        "Pixel A": (x_data[0][0], y_data[0][0]),
-        "Pixel B": (x_data[0][1], y_data[0][1]),
+        "Pixel A": (x_data[50][50], y_data[50][50]),
+        "Pixel B": (x_data[80][80], y_data[80][80]),
         "Pixel C": (x_data[0][144], y_data[0][144]),
     }
 
