@@ -19,7 +19,10 @@ y_1 = y_data[50, 50]
 y_2 = y_data[80, 80]
 y_3 = y_data[51, 51]
 
-print(y_1, y_2, y_3)
+print(f"Class of pixel 1: {y_1}")
+print(f"Class of pixel 2: {y_2}")
+print(f"Class of pixel 3: {y_3}")
+print("-"*50)
 
 # L2 Distance
 dist_12 = np.linalg.norm(x_1 - x_2)
@@ -29,23 +32,23 @@ print(
 print(
     f"The euclidean distance between pixel 1 and pixel 3: {dist_13:.4f} (same classes)")
 print("-"*50)
+
 # Spectral Angles Mappers
-val_12 = MC.SAM(x_1, x_2)
-val_13 = MC.SAM(x_1, x_3)
+sam_12 = MC.SAM(x_1, x_2)
+sam_13 = MC.SAM(x_1, x_3)
 print(
-    f"The SAM value between pixel 1 and pixel 2: {val_12:.4f} (different classes)")
+    f"The SAM value between pixel 1 and pixel 2: {sam_12:.4f} (different classes)")
 print(
-    f"The SAM value between pixel 1 and pixel 3: {val_13:.4f} (same classes)")
+    f"The SAM value between pixel 1 and pixel 3: {sam_13:.4f} (same classes)")
+print("-"*50)
 
 # Spectral Information Divergence (SID)
-SID_F = 0
-SID_R = 0
-for i in range(200):
-    x_1 = int(x_data[30, 30, i])
-    x_2 = int(x_data[120, 120, i])
-    SID_F += MC.KLD(x_1, x_2)
-    SID_R += MC.KLD(x_2, x_1)
-print(SID_F+SID_R)
+sid_12 = MC.SID(x_1, x_2)
+sid_13 = MC.SID(x_1, x_3)
+print(
+    f"The SID value between pixel 1 and pixel 2: {sid_12:.4f} (different classes)")
+print(
+    f"The SID value between pixel 1 and pixel 3: {sid_13:.4f} (same classes)")
 
 
 # plt.figure()
